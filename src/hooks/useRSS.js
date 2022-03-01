@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import api from '../api/api';
 
 //Custom hook get/post/delete rss
-const useRSS = ({ url, method, headers }) => {
+export const useRSS = ({ url, method, headers }) => {
   const [response, setResponse] = useState(null);
   const [error, setError] = useState('');
   const [loading, setloading] = useState(true);
@@ -34,5 +34,3 @@ const useRSS = ({ url, method, headers }) => {
 
   return { response, error, loading };
 };
-
-export default useRSS;
