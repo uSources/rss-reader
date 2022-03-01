@@ -1,7 +1,7 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Order } from './Order';
-import useRss from '../hooks/useRSS';
 import { Searchbar } from './Searchbar';
+import { useRSS } from '../hooks/useRSS';
 import { Feed } from './Feed';
 import { defaultURL } from '../config/config';
 import { Link } from 'react-router-dom';
@@ -10,7 +10,7 @@ import { orderByKey } from '../utils/utils';
 
 export const Dashboard = () => {
   //get response, error, loading from url
-  const { response, error, loading } = useRss({
+  const { response, error, loading } = useRSS({
     url: getStorage({ key: 'url', initialValue: defaultURL }),
     headers: null,
     method: 'get',

@@ -17,6 +17,7 @@ export const Order = ({ selectOrder }) => {
         className='p-2 rounded-lg caret-pink-500 text-black dark:bg-gray-900 dark:text-white'
         name='order'
         value={order}
+        data-testid='order'
         onChange={onChange}
       >
         <option value='pubDate'>Date</option>
