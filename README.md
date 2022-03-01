@@ -24,6 +24,10 @@ Can change default RSS url changing [config.js](src/config/config.js) file or ch
 
 use `npm test`
 
+## Dark Mode
+
+Change your OS theme and check it out dark/light version
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
