@@ -7,7 +7,8 @@ import { defaultURL } from '../config/config';
 import { Link } from 'react-router-dom';
 import { getStorage } from '../utils/getStorage';
 import { orderByKey } from '../utils/utils';
-
+import { Loading } from './Loading';
+import { Error } from './Error';
 export const Dashboard = () => {
   //get response, error, loading from url
   const { response, error, loading } = useRSS({
@@ -54,24 +55,11 @@ export const Dashboard = () => {
   };
 
   if (loading) {
-    return (
-      <div className='flex flex-col h-screen items-center justify-center text-pink-500 font-bold'>
-        <span>Loading...</span>
-      </div>
-    );
+    return <Loading></Loading>;
   }
 
   if (error) {
-    return (
-      <div className='flex flex-col h-screen items-center justify-center text-pink-500 font-bold'>
-        <span>Error, Something went wrong!</span>
-        <span>
-          <Link to='/config' className='hover:underline'>
-            Try to use different RSS URL
-          </Link>
-        </span>
-      </div>
-    );
+    return <Error></Error>;
   }
 
   return (
