@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Order } from './Order';
 import { Searchbar } from './Searchbar';
 import { useRSS } from '../hooks/useRSS';
