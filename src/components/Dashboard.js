@@ -54,14 +54,23 @@ export const Dashboard = () => {
   };
 
   if (loading) {
-    return <span className='text-pink-500 font-bold'>Loading...</span>;
+    return (
+      <div className='flex flex-col h-screen items-center justify-center text-pink-500 font-bold'>
+        <span>Loading...</span>
+      </div>
+    );
   }
 
   if (error) {
     return (
-      <span className='text-pink-500 font-bold'>
-        Error, Something went wrong!
-      </span>
+      <div className='flex flex-col h-screen items-center justify-center text-pink-500 font-bold'>
+        <span>Error, Something went wrong!</span>
+        <span>
+          <Link to='/config' className='hover:underline'>
+            Try to use different RSS URL
+          </Link>
+        </span>
+      </div>
     );
   }
 
