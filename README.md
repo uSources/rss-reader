@@ -13,6 +13,7 @@ Simple RSS 2.0 reader
 ## Installation
 
 - use `git clone <git>`
+- `cd rss-reader`
 - `npm install`
 - `npm run start`
 
