@@ -8,8 +8,12 @@ export const Select = ({ value, onChange, name, options }) => {
       onChange={onChange}
     >
       {options &&
-        options.map((option) => {
-          return <option value={option.value}>{option.key}</option>;
+        options.map((option, index) => {
+          return (
+            <option key={index} value={option.value}>
+              {option.key}
+            </option>
+          );
         })}
     </select>
   );
