@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { getStorageValue, orderByKey } from '../utils/utils';
 import { Message } from './Message';
 import { FeedHeader } from './FeedHeader';
+import { Label } from './Label';
 export const Dashboard = () => {
   //get response, error, loading from url
   const { response, error, loading } = useRSS({
@@ -59,7 +60,7 @@ export const Dashboard = () => {
     return (
       <Message message='Error, Something went wrong!'>
         <Link to='/config' className='hover:underline'>
-          Try to use different RSS URL
+          <Label>Try to use different RSS URL</Label>
         </Link>
       </Message>
     );
