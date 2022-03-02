@@ -1,18 +1,15 @@
 import { useEffect, useState } from 'react';
-import { Order } from './Order';
-import { Searchbar } from './Searchbar';
 import { useRSS } from '../hooks/useRSS';
 import { Feed } from './Feed';
 import { defaultURL } from '../config/config';
 import { Link } from 'react-router-dom';
-import { getStorage } from '../utils/getStorage';
-import { orderByKey } from '../utils/utils';
-import { Loading } from './Loading';
-import { Error } from './Error';
+import { getStorageValue, orderByKey } from '../utils/utils';
+import { Message } from './Message';
+import { FeedHeader } from './FeedHeader';
 export const Dashboard = () => {
   //get response, error, loading from url
   const { response, error, loading } = useRSS({
-    url: getStorage({ key: 'url', initialValue: defaultURL }),
+    url: getStorageValue('url', defaultURL),
     headers: null,
     method: 'get',
   });
@@ -55,26 +52,22 @@ export const Dashboard = () => {
   };
 
   if (loading) {
-    return <Loading></Loading>;
+    return <Message message='Loading...'></Message>;
   }
 
   if (error) {
-    return <Error></Error>;
+    return (
+      <Message message='Error, Something went wrong!'>
+        <Link to='/config' className='hover:underline'>
+          Try to use different RSS URL
+        </Link>
+      </Message>
+    );
   }
 
   return (
     <div className='mx-4'>
-      <div className='p-4 flex flew-row items-center'>
-        <div className='w-60'>
-          <Order selectOrder={orderData}></Order>
-        </div>
-        <div className='grow'>
-          <Searchbar setSearchtext={searchText}></Searchbar>
-        </div>
-        <Link to='/config'>
-          <div className='mx-4 text-pink-500 text-3xl'>⚙</div>
-        </Link>
-      </div>
+      <FeedHeader orderData={orderData} searchText={searchText}></FeedHeader>
       <Feed feed={data} />
     </div>
   );

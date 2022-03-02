@@ -2,38 +2,50 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { defaultURL } from '../config/config';
 import { useStorage } from '../hooks/useStorage';
+import { Button } from './Button';
+import { Card } from './Card';
+import { FieldError } from './FieldError';
+import { InputLabel } from './InputLabel';
 
 export const Config = () => {
   //get url of localstorage or return default url setted in config.js
   const [url, setUrl] = useStorage('url', defaultURL);
+  //error state
+  const [error, setError] = useState(null);
   //navigate hook
   const navigate = useNavigate();
 
-  //if is not empty set to localstorage and redirecto to dashboard
+  //on input change
+  const handleChange = (e) => {
+    e.preventDefault();
+    setUrl(e.target.value);
+    //Testing if is valid url
+    if (/(http(s?)):\/\//i.test(e.target.value)) {
+      setError(null);
+    } else {
+      setError('Must be a valid RSS URL');
+    }
+  };
+
+  //if is has not error, redirecto to dashboard
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (url.trim() !== '') {
+    if (!error) {
       navigate('/');
     }
   };
   return (
-    <div className='m-4 p-4 bg-white dark:bg-gray-700 flex flex-col rounded-lg shadow-lg'>
+    <Card>
       <form onSubmit={handleSubmit} className='flex flex-col w-full'>
-        <label className='dark:text-pink-500 font-bold'>RSS URL: </label>
-        <input
-          type='text'
+        <InputLabel
           value={url}
-          placeholder='Enter rss url...'
-          className='w-full bg-gray-100 rounded-lg caret-pink-500 text-black dark:bg-gray-900 p-2 dark:text-white'
-          onChange={(e) => setUrl(e.target.value)}
-        ></input>
-        <button
-          className='my-4 block w-52 bg-pink-200 dark:bg-pink-500 p-2 rounded-xl hover:shadow-lg'
-          type='submit'
-        >
-          Save
-        </button>
+          onChange={handleChange}
+          label='URL RSS:'
+          placeholder='http://...'
+        ></InputLabel>
+        <FieldError message={error}></FieldError>
+        <Button type='submit' value='Save'></Button>
       </form>
-    </div>
+    </Card>
   );
 };
