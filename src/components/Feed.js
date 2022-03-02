@@ -1,13 +1,10 @@
 import { PostSmall } from './PostSmall';
+import { Message } from './Message';
 
 export const Feed = ({ feed }) => {
   //If feed is empty, show error message
   if (feed.length <= 0) {
-    return (
-      <div className='flex justify-center items-center h-screen text-xl font-bold dark:text-pink-500'>
-        Nothing to see here
-      </div>
-    );
+    return <Message message='Nothing to see here'></Message>;
   }
 
   //Render post

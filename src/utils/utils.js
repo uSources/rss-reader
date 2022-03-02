@@ -24,3 +24,9 @@ export const orderByKey = ({ key, array }) => {
     return priority;
   });
 };
+
+export const getStorageValue = (key, initialValue) => {
+  const item = localStorage.getItem(key);
+  const initial = JSON.parse(item);
+  return initial ?? initialValue;
+};

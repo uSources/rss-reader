@@ -13,6 +13,7 @@ Simple RSS 2.0 reader
 ## Installation
 
 - use `git clone <git>`
+- `cd rss-reader`
 - `npm install`
 - `npm run start`
 
@@ -23,6 +24,10 @@ Can change default RSS url changing [config.js](src/config/config.js) file or ch
 ## Testing
 
 use `npm test`
+
+## Dark Mode
+
+Change your OS theme and check it out dark/light version
 
 ## License
 

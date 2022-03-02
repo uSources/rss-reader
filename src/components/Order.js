@@ -1,8 +1,26 @@
 import React, { useState } from 'react';
+import { Label } from './Label';
+import { Select } from './Select';
 
 export const Order = ({ selectOrder }) => {
   //order state
   const [order, setOrder] = useState('date');
+
+  //Order options
+  const options = [
+    {
+      key: 'Date',
+      value: 'pubDate',
+    },
+    {
+      key: 'Author',
+      value: 'author',
+    },
+    {
+      key: 'Title',
+      value: 'title',
+    },
+  ];
 
   const onChange = (e) => {
     e.preventDefault();
@@ -11,18 +29,14 @@ export const Order = ({ selectOrder }) => {
   };
 
   return (
-    <div className='text-pink-500'>
-      <span className='mr-4 font-bold'>Order by:</span>
-      <select
-        className='p-2 rounded-lg caret-pink-500 text-black dark:bg-gray-900 dark:text-white'
+    <React.Fragment>
+      <Label className='mr-4'>Order by:</Label>
+      <Select
         name='order'
         value={order}
         onChange={onChange}
-      >
-        <option value='pubDate'>Date</option>
-        <option value='author'>Author</option>
-        <option value='title'>Title</option>
-      </select>
-    </div>
+        options={options}
+      ></Select>
+    </React.Fragment>
   );
 };

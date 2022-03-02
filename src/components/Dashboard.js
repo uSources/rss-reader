@@ -1,17 +1,16 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import { Order } from './Order';
-import useRss from '../hooks/useRSS';
-import { Searchbar } from './Searchbar';
+import { useEffect, useState } from 'react';
+import { useRSS } from '../hooks/useRSS';
 import { Feed } from './Feed';
 import { defaultURL } from '../config/config';
 import { Link } from 'react-router-dom';
-import { getStorage } from '../utils/getStorage';
-import { orderByKey } from '../utils/utils';
-
+import { getStorageValue, orderByKey } from '../utils/utils';
+import { Message } from './Message';
+import { FeedHeader } from './FeedHeader';
+import { Label } from './Label';
 export const Dashboard = () => {
   //get response, error, loading from url
-  const { response, error, loading } = useRss({
-    url: getStorage({ key: 'url', initialValue: defaultURL }),
+  const { response, error, loading } = useRSS({
+    url: getStorageValue('url', defaultURL),
     headers: null,
     method: 'get',
   });
@@ -54,30 +53,24 @@ export const Dashboard = () => {
   };
 
   if (loading) {
-    return <span className='text-pink-500 font-bold'>Loading...</span>;
+    return <Message message='Loading...'></Message>;
   }
 
   if (error) {
     return (
-      <span className='text-pink-500 font-bold'>
-        Error, Something went wrong!
-      </span>
+      <Message message='Error, Something went wrong!'>
+        <Link to='/config' className='hover:underline'>
+          <Label className='hover:underline'>
+            Try to use different RSS URL
+          </Label>
+        </Link>
+      </Message>
     );
   }
 
   return (
-    <div className='mx-4'>
-      <div className='p-4 flex flew-row items-center'>
-        <div className='w-60'>
-          <Order selectOrder={orderData}></Order>
-        </div>
-        <div className='grow'>
-          <Searchbar setSearchtext={searchText}></Searchbar>
-        </div>
-        <Link to='/config'>
-          <div className='mx-4 text-pink-500 text-3xl'>⚙</div>
-        </Link>
-      </div>
+    <div className='m-4'>
+      <FeedHeader orderData={orderData} searchText={searchText}></FeedHeader>
       <Feed feed={data} />
     </div>
   );
