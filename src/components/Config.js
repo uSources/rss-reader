@@ -12,8 +12,6 @@ export const Config = () => {
   const [url, setUrl] = useStorage('url', defaultURL);
   //error state
   const [error, setError] = useState(null);
-  //navigate hook
-  const navigate = useNavigate();
 
   //on input change
   const handleChange = (e) => {
@@ -26,26 +24,15 @@ export const Config = () => {
       setError('Must be a valid RSS URL');
     }
   };
-
-  //if is has not error, redirecto to dashboard
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!error) {
-      navigate('/');
-    }
-  };
   return (
     <Card>
-      <form onSubmit={handleSubmit} className='flex flex-col w-full'>
-        <InputLabel
-          value={url}
-          onChange={handleChange}
-          label='URL RSS:'
-          placeholder='http://...'
-        ></InputLabel>
-        <FieldError message={error}></FieldError>
-        <Button type='submit' value='Save'></Button>
-      </form>
+      <InputLabel
+        value={url}
+        onChange={handleChange}
+        label='URL RSS:'
+        placeholder='http://...'
+      ></InputLabel>
+      <FieldError message={error}></FieldError>
     </Card>
   );
 };
