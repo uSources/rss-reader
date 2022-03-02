@@ -60,7 +60,9 @@ export const Dashboard = () => {
     return (
       <Message message='Error, Something went wrong!'>
         <Link to='/config' className='hover:underline'>
-          <Label>Try to use different RSS URL</Label>
+          <Label className='hover:underline'>
+            Try to use different RSS URL
+          </Label>
         </Link>
       </Message>
     );
