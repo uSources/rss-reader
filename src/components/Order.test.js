@@ -3,10 +3,11 @@ import { BrowserRouter } from 'react-router-dom';
 import { Order } from './Order';
 
 describe('Order test', () => {
+  const orderFn = jest.fn(() => {});
   const setup = () => {
     return render(
       <BrowserRouter>
-        <Order selectOrder={() => {}}></Order>
+        <Order selectOrder={orderFn}></Order>
       </BrowserRouter>
     );
   };
@@ -17,8 +18,9 @@ describe('Order test', () => {
 
   test('should update value', () => {
     setup();
-    fireEvent.change(screen.getByTestId('order'), {
+    fireEvent.change(screen.getByRole('combobox'), {
       target: { value: 'test' },
     });
+    expect(orderFn).toHaveBeenCalledTimes(1);
   });
 });

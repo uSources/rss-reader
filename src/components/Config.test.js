@@ -25,24 +25,20 @@ describe('Config test', () => {
     expect(screen.getByRole('textbox')).toHaveValue(defaultURL);
   });
 
-  test('should have button', () => {
-    setup();
-    expect(screen.getByRole('button')).toBeDefined();
-  });
-
-  test('should update value', () => {
+  test('should show error', () => {
     setup();
     const elm = screen.getByRole('textbox');
     fireEvent.change(elm, { target: { value: 'testing' } });
     expect(elm).toBeDefined();
     expect(elm).toHaveValue('testing');
+    expect(screen.getByText('Must be a valid RSS URL')).toBeDefined();
   });
 
-  test('should click button and send form', async () => {
+  test('should pass regexp test', () => {
     setup();
-    const buttonElm = screen.getByRole('button');
-    const inputElm = screen.getByRole('textbox');
-    fireEvent.change(inputElm, { target: { value: 'testing' } });
-    fireEvent.submit(buttonElm);
+    const elm = screen.getByRole('textbox');
+    fireEvent.change(elm, { target: { value: defaultURL } });
+    expect(elm).toBeDefined();
+    expect(elm).toHaveValue(defaultURL);
   });
 });
