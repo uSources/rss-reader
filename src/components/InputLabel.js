@@ -9,9 +9,7 @@ export const InputLabel = ({
 }) => {
   return (
     <React.Fragment>
-      {label && (
-        <label className='dark:text-pink-500 font-bold'>RSS URL: </label>
-      )}
+      {label && <label className='dark:text-pink-500 font-bold'>{label}</label>}
       <input
         type={type}
         value={value}
