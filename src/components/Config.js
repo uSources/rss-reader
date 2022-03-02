@@ -1,13 +1,11 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { defaultURL } from '../config/config';
-import { getStorage } from '../utils/getStorage';
+import { useStorage } from '../hooks/useStorage';
 
 export const Config = () => {
   //get url of localstorage or return default url setted in config.js
-  const [url, setUrl] = useState(
-    getStorage({ key: 'url', initialValue: defaultURL })
-  );
+  const [url, setUrl] = useStorage('url', defaultURL);
   //navigate hook
   const navigate = useNavigate();
 
@@ -15,7 +13,6 @@ export const Config = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (url.trim() !== '') {
-      localStorage.setItem('url', url);
       navigate('/');
     }
   };
