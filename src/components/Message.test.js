@@ -1,15 +1,14 @@
 import { render, screen } from '@testing-library/react';
 import { Route, Router, Routes } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
-
-import { Error } from './Error';
-describe('Error test', () => {
+import { Message } from './Message';
+describe('Message test', () => {
   const setup = () => {
     const history = createMemoryHistory();
     return render(
       <Router location={history.location} navigator={history}>
         <Routes>
-          <Route path='/' element={<Error />}></Route>
+          <Route path='/' element={<Message />}></Route>
         </Routes>
       </Router>
     );
