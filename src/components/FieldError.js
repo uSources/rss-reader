@@ -1,3 +1,5 @@
+import { Label } from './Label';
+
 export const FieldError = ({ message }) => {
-  return <span className='text-red-500 font-bold'>{message}</span>;
+  return <Label className='text-red-500'>{message}</Label>;
 };

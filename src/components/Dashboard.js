@@ -66,7 +66,7 @@ export const Dashboard = () => {
   }
 
   return (
-    <div className='mx-4'>
+    <div className='m-4'>
       <FeedHeader orderData={orderData} searchText={searchText}></FeedHeader>
       <Feed feed={data} />
     </div>

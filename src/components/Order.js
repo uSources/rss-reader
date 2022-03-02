@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { Label } from './Label';
 import { Select } from './Select';
 
 export const Order = ({ selectOrder }) => {
@@ -28,14 +29,14 @@ export const Order = ({ selectOrder }) => {
   };
 
   return (
-    <div className='text-pink-500'>
-      <span className='mr-4 font-bold'>Order by:</span>
+    <React.Fragment>
+      <Label className='mr-4'>Order by:</Label>
       <Select
         name='order'
         value={order}
         onChange={onChange}
         options={options}
       ></Select>
-    </div>
+    </React.Fragment>
   );
 };

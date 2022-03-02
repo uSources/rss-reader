@@ -5,7 +5,7 @@ import { Searchbar } from './Searchbar';
 
 export const FeedHeader = ({ orderData, searchText }) => {
   return (
-    <div className='p-4 flex flew-row items-center'>
+    <div className='flex flew-row items-center'>
       <div className='w-60'>
         <Order selectOrder={orderData}></Order>
       </div>
