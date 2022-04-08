@@ -25,7 +25,7 @@ export const useRSS = ({ url, method, headers }) => {
             thumbnail: item?.enclosure?.link,
             content: item?.content,
             description: item?.description,
-            isRead: read_guids.some((guid) => guid === item.guid),
+            isRead: read_guids.includes(item.guid),
           }));
           setResponse(rssItems);
         })
