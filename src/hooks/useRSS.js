@@ -10,6 +10,8 @@ export const useRSS = ({ url, method, headers }) => {
   useEffect(() => {
     //Get rss as json and tranform
     const fetch = () => {
+      const read_guids = JSON.parse(localStorage.getItem('read_guid')) ?? [];
+
       api[method](`/api.json?rss_url=${url}`, JSON.parse(headers))
         .then((res) => {
           const rssItems = res.data.items.map((item, index) => ({
@@ -23,6 +25,7 @@ export const useRSS = ({ url, method, headers }) => {
             thumbnail: item?.enclosure?.link,
             content: item?.content,
             description: item?.description,
+            isRead: read_guids.some((guid) => guid === item.guid),
           }));
           setResponse(rssItems);
         })

@@ -3,6 +3,7 @@ import { PostFooter } from './PostFooter';
 import sanitizeHtml from 'sanitize-html';
 import { PostImage } from './PostImage';
 import { PostBody } from './PostBody';
+import { useEffect } from 'react';
 
 export const PostDetail = () => {
   //location state
@@ -12,6 +13,19 @@ export const PostDetail = () => {
   const cleatHTML = sanitizeHtml(state.content, {
     allowedTags: ['b', 'i', 'em', 'strong', 'a'],
   });
+
+  useEffect(() => {
+    //Obtain readed guid
+    const read_guid = JSON.parse(localStorage.getItem('read_guid')) ?? [];
+
+    //Set item as read
+    if (!state.isRead) {
+      localStorage.setItem(
+        'read_guid',
+        JSON.stringify([...read_guid, state.guid])
+      );
+    }
+  }, []);
 
   return (
     <div className='m-4 flex flex-row'>

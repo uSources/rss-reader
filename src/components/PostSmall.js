@@ -9,15 +9,21 @@ export const PostSmall = ({ item }) => {
   const cleatHTML = sanitizeHtml(item.description, {
     allowedTags: ['b', 'i', 'em', 'strong'],
   });
+  console.log(item.isRead);
+
   return (
     <Link to='/detail' state={item}>
-      <div className='my-6 flex flex-row'>
+      <div
+        className={`my-6 flex flex-row', ${item.isRead ? 'opacity-50' : ''}`}
+      >
         <div className='w-50 h-full'>
           <PostImage thumbnail={item.thumbnail}></PostImage>
         </div>
         <div className='w-full mx-2 flex flex-col'>
           <PostBody title={item.title}>
-            <div className='line-clamp-2'>{cleatHTML}</div>
+            <div className='line-clamp-2'>
+              <div dangerouslySetInnerHTML={{ __html: cleatHTML }}></div>
+            </div>
           </PostBody>
           <PostFooter author={item.author} date={item.pubDate}></PostFooter>
         </div>
