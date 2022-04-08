@@ -13,7 +13,7 @@ export const fetchRSS = ({ url, method, headers }) => {
         link: item?.link,
         title: item?.title,
         pubDate: item?.pubDate ? new Date(item.pubDate) : new Date(), //if date is not set, return new Date() value
-        author: item?.author,
+        author: item?.author ?? 'Anonymous',
         thumbnail: item?.enclosure?.link,
         content: item?.content,
         description: item?.description,
