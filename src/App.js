@@ -9,7 +9,6 @@ import { ProtectedStateRoute } from './components/ProtectedStateRoute';
 import { Back } from './components/Back';
 import { Provider } from './store/Feed';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { ReactQueryDevtools } from 'react-query/devtools';
 
 // Create a client and use custom config
 const queryClient = new QueryClient({
@@ -38,7 +37,6 @@ function App() {
           <Route path='/config' element={<Config />} />
         </Routes>
       </Provider>
-      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 }
