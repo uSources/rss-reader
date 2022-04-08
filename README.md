@@ -9,6 +9,7 @@ Simple RSS 2.0 reader
 - [Tailwind](https://github.com/tailwindlabs/tailwindcss): As CSS lib
 - [Axios](https://github.com/axios/axios): As HTTP client lib
 - [Sanitize-html](https://github.com/apostrophecms/sanitize-html): Prevent XSS inyection
+- [React-Query](https://github.com/tannerlinsley/react-query): Hooks for fetching, caching and updating asynchronous data in React
 
 ## Installation
 
