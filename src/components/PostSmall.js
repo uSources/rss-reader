@@ -9,7 +9,6 @@ export const PostSmall = ({ item }) => {
   const cleatHTML = sanitizeHtml(item.description, {
     allowedTags: ['b', 'i', 'em', 'strong'],
   });
-  console.log(item.isRead);
 
   return (
     <Link to='/detail' state={item}>

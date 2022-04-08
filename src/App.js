@@ -7,10 +7,11 @@ import { PostDetail } from './components/PostDetail';
 import { Config } from './components/Config';
 import { ProtectedStateRoute } from './components/ProtectedStateRoute';
 import { Back } from './components/Back';
+import { Provider } from './store/Feed';
 
 function App() {
   return (
-    <React.Fragment>
+    <Provider>
       <Back></Back>
       <Routes>
         <Route path='/' element={<Dashboard />} />
@@ -19,7 +20,7 @@ function App() {
         </Route>
         <Route path='/config' element={<Config />} />
       </Routes>
-    </React.Fragment>
+    </Provider>
   );
 }
 
