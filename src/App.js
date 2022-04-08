@@ -7,7 +7,7 @@ import { PostDetail } from './components/PostDetail';
 import { Config } from './components/Config';
 import { ProtectedStateRoute } from './components/ProtectedStateRoute';
 import { Back } from './components/Back';
-import { Provider } from './store/Feed';
+import { Provider } from './store/FeedStore';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 // Create a client and use custom config

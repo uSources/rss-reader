@@ -6,7 +6,7 @@ import { getStorageValue } from '../utils/utils';
 import { Message } from './Message';
 import { FeedHeader } from './FeedHeader';
 import { Label } from './Label';
-import FeedListContext from '../store/Feed';
+import FeedListContext from '../store/FeedStore';
 import { useQuery } from 'react-query';
 import { fetchRSS } from '../api/rss';
 
